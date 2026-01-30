@@ -55,6 +55,8 @@ Enter:
 Preferred DNS:   1.1.1.1
 Alternate DNS:   1.0.0.1
 
+<img width="717" height="655" alt="ethipv4dns" src="https://github.com/user-attachments/assets/ba8f1958-89ed-46ab-adc8-31d5076eeb6c" />
+
 
 Save changes
 
@@ -76,6 +78,10 @@ Use Secure DNS
 Select provider:
 
 Cloudflare (1.1.1.1)
+
+<img width="705" height="229" alt="googledns" src="https://github.com/user-attachments/assets/ef58fad9-8ff8-4911-9f58-fcedd56cb0dc" />
+
+
 
 This forces Chrome to use DNS over HTTPS (DoH), encrypting DNS requests and bypassing ISP DNS interception.
 
