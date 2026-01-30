@@ -1,155 +1,62 @@
-My ISP gateway does not allow manual DNS configuration or bridge mode, so I implemented a device-level DNS workaround using Cloudflare and encrypted DNS within Google Chrome.
+Overview
 
-This setup improves privacy, security, and DNS performance without modifying ISP hardware.
+This project documents how I implemented secure DNS resolution on a Windows 10 system where the ISP gateway restricted DNS configuration.
 
-Network Environment
+The goal was to improve privacy, prevent DNS interception, and demonstrate practical networking troubleshooting.
 
-Operating System: Windows 10
+Problem
 
-ISP: Xfinity (DNS locked at gateway level)
+ISP router locked DNS settings
 
-Router Access: Limited (no bridge mode / DNS override)
+No bridge mode available
 
-Browser: Google Chrome
+DNS traffic could be monitored or redirected
 
-Objective
+Solution
 
-Bypass ISP-enforced DNS routing
+Configured Cloudflare DNS (1.1.1.1 / 1.0.0.1)
 
-Route DNS queries through Cloudflare DNS
+Enabled encrypted DNS (DNS over HTTPS) in Google Chrome
 
-Enable encrypted DNS (DNS over HTTPS)
+Verified secure DNS resolution via Cloudflare diagnostic tools
 
-Improve privacy and security at the endpoint level
 
-Cloudflare DNS Servers Used
-Primary DNS:   1.1.1.1
-Secondary DNS: 1.0.0.1
+<img width="717" height="655" alt="ethipv4dns" src="https://github.com/user-attachments/assets/888515fa-ca4a-4a05-8e1e-193c9980fcde" />
 
-Implementation Steps
-Step 1 — Access Network Adapter Settings
 
-Press Windows + R
+<img width="705" height="229" alt="googledns" src="https://github.com/user-attachments/assets/6cc1b889-9991-473e-8110-eb6294603902" />
 
-Enter:
 
-ncpa.cpl
+<img width="602" height="143" alt="cloudflareconfirmation" src="https://github.com/user-attachments/assets/0b3ce5cd-6b15-47d2-aebf-045c966f45cb" />
 
 
-Press Enter to open Network Connections
 
-Step 2 — Configure DNS on Active Adapter
+Skills Demonstrated
 
-Right-click the active network adapter (Ethernet or Wi-Fi)
+DNS resolution fundamentals
 
-Select Properties
+Troubleshooting ISP network limitations
 
-Open Internet Protocol Version 4 (IPv4)
+Endpoint-level network configuration
 
-Choose:
+Security-focused problem solving
 
-Use the following DNS server addresses
+Technical documentation
 
-Enter:
+Verification
 
-Preferred DNS:   1.1.1.1
-Alternate DNS:   1.0.0.1
+Cloudflare DNS verification page confirmed:
 
-<img width="717" height="655" alt="ethipv4dns" src="https://github.com/user-attachments/assets/ba8f1958-89ed-46ab-adc8-31d5076eeb6c" />
+Using Cloudflare DNS
 
+DNS over HTTPS enabled
 
-Save changes
+Technologies Used
 
-This ensures Cloudflare DNS is preferred at the operating system level.
+Windows 10
 
-Step 3 — Enable Encrypted DNS in Google Chrome
+Google Chrome
 
-Open Chrome Settings
+Cloudflare DNS (1.1.1.1)
 
-Navigate to:
-
-Privacy and Security → Security
-
-
-Enable:
-
-Use Secure DNS
-
-Select provider:
-
-Cloudflare (1.1.1.1)
-
-<img width="705" height="229" alt="googledns" src="https://github.com/user-attachments/assets/ef58fad9-8ff8-4911-9f58-fcedd56cb0dc" />
-
-
-
-This forces Chrome to use DNS over HTTPS (DoH), encrypting DNS requests and bypassing ISP DNS interception.
-
-Step 4 — Verification
-
-To confirm functionality, navigate to:
-
-https://1.1.1.1/help
-
-
-Successful configuration displays:
-
-✅ Using Cloudflare DNS: YES
-
-✅ DNS over HTTPS: YES
-
-This confirms DNS queries are encrypted and resolved by Cloudflare.
-
-Why This Works
-
-Although the ISP router distributes DNS information via DHCP, modern browsers like Chrome support independent encrypted DNS resolution.
-
-By enabling Secure DNS:
-
-Browser → Encrypted DNS tunnel → Cloudflare → Internet
-
-
-The ISP is unable to intercept, redirect, or log domain lookups.
-
-Benefits of Using Cloudflare DNS
-🔐 Improved Privacy
-
-DNS queries are encrypted using DNS over HTTPS
-
-Prevents ISP DNS monitoring and manipulation
-
-Cloudflare does not sell user DNS data
-
-🛡️ Enhanced Security
-
-Protection against DNS spoofing and hijacking
-
-Reduced exposure to malicious domains
-
-Optional malware and content filtering available
-
-⚡ Faster DNS Resolution
-
-Cloudflare operates one of the largest global DNS networks
-
-Typically lower DNS latency compared to ISP DNS
-
-🧠 Real-World Networking Experience
-
-Demonstrates understanding of:
-
-DNS resolution
-
-ISP gateway limitations
-
-Encrypted DNS
-
-Endpoint-level security controls
-
-Mirrors real enterprise troubleshooting scenarios
-
-Key Takeaway
-
-Even when ISP hardware restricts DNS configuration, secure DNS can still be implemented at the endpoint and application layer.
-
-This project demonstrates a practical workaround using industry-standard tools and highlights how encryption can be used to regain control over network behavior.
+DNS over HTTPS (DoH)
